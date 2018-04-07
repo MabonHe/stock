@@ -48,7 +48,7 @@ while n < 87:
         search=re.search(r'\[\[(.*)',htmlstr)
         search = search.group()
         #print(search)
-        split = re.split(r'\]',search)
+        split = re.split(r'\[',search)
         print(split)
         for line in split:
             print(line)
@@ -63,7 +63,7 @@ while n < 87:
                 print(what)
                 stocklist.append(what)
             stock.getdata(stocklist)
-            stock.printall()
+            #stock.printall()
             stock.updatestockdata(cursor)
         rdom = random.randint(6,15)
         print(rdom)
