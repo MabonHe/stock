@@ -44,11 +44,14 @@ while n < 87:
         #file.close()
         #file = open('data.txt','r').read()
         htmlstr = html.decode()
+        print(htmlstr)
         search=re.search(r'\[\[(.*)',htmlstr)
         search = search.group()
-        split = re.split(r'\[',search)
+        #print(search)
+        split = re.split(r'\]',search)
+        print(split)
         for line in split:
-        #print(line)
+            print(line)
             split_m = re.split(r'\,',line)
             stocklist = []
             for dataline in split_m:
@@ -57,10 +60,10 @@ while n < 87:
                     what=dataline
                 else:
                     what = match.group(1)
-                #print(what)
+                print(what)
                 stocklist.append(what)
             stock.getdata(stocklist)
-
+            stock.printall()
             stock.updatestockdata(cursor)
         rdom = random.randint(6,15)
         print(rdom)

@@ -141,7 +141,14 @@ class StockDatabase():
 			print('get data error')
 		return data
 	def updatestockdata(self,cursor):
-		print('test')
+		sql = "UPDATE maininfo SET trade = %s,pricechange = %s,changepercent = %s,buy = %s,sell = %s,settlement = %s,open = %s,high = %s,low = %s,volume = %s,amount = %s,tickitime = %s,per = %s,per_d = %s,nta = %s,pb = %s,mktcap = %s,nmc = %s,turnoverratio = %s  WHERE code = %s " % \
+			(self.m_trade,self.m_pricechange,self.m_changepercent,self.m_buy,self.m_sell,self.m_settlement,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_tickitime,self.m_per,self.m_per_d,self.m_nta,self.m_pb,self.m_mktcap,self.m_nmc,self.m_turnoverratio,self.m_code)
+		print(sql)
+		try:
+			cursor.execute(sql)
+			self.m_db.commit()
+		except:
+			self.m_db.rollback()
 	def insertdata(self,cursor, status = 0):
 		if status == 0:
 			sql = """INSERT main%s(symbol,code,trade,pricechange,changepercent,open,high,low,volume,amount,tickitime,turnoverratio) \
@@ -196,6 +203,29 @@ class StockDatabase():
 		m_mktcap         = data[19]
 		m_nmc            = data[20]
 		m_turnoverratio  = data[21]
+	def printall(self):
+		print(self.m_symbol        )
+		print(self.m_code          )
+		print(self.m_name          )
+		print(self.m_trade         )
+		print(self.m_pricechange   )
+		print(self.m_changepercent )
+		print(self.m_buy           )
+		print(self.m_sell          )
+		print(self.m_settlement    )
+		print(self.m_open          )
+		print(self.m_high          )
+		print(self.m_low           )
+		print(self.m_volume        )
+		print(self.m_amount        )
+		print(self.m_tickitime     )
+		print(self.m_per           )
+		print(self.m_per_d         )
+		print(self.m_nta           )
+		print(self.m_pb            )
+		print(self.m_mktcap        )
+		print(self.m_nmc           )
+		print(self.m_turnoverratio )
 	def getdata(self,data):
 		k =0
 		j =1
