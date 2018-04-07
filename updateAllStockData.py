@@ -65,7 +65,7 @@ while n < 87:
             stock.getdata(stocklist)
             #stock.printall()
             stock.updatestockdata(cursor)
-        rdom = random.randint(6,15)
+        rdom = random.randint(15,80)
         print(rdom)
 
         time.sleep(rdom)
