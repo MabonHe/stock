@@ -175,6 +175,10 @@ class StockDatabase():
 			sql = "UPDATE maininfo SET status = 1 WHERE code = '%s'" % code
 		elif status == 2:
 			sql = "UPDATE maininfo SET status = 0 WHERE code = '%s'" % code
+		elif status == 3:
+			sql = "UPDATE maininfo SET update_status = 1 WHERE code = '%s'" % code
+		elif status == 4:
+			sql = "UPDATE maininfo SET update_status = 0 WHERE code = '%s'" % code
 		try:
 			cursor.execute(sql)
 			self.m_db.commit()
