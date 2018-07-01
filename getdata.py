@@ -28,3 +28,7 @@ while True:
     htmlstr = html.decode('GBK')
     search=re.search(r'=(.*)',htmlstr)
     print(search.group(1))
+    search = search.group(1)
+    split = re.split(r',',search)
+    for line in split:
+        print(line)
