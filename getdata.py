@@ -27,8 +27,12 @@ while True:
     #print(html)
     htmlstr = html.decode('GBK')
     search=re.search(r'=(.*)',htmlstr)
-    print(search.group(1))
+    #print(search.group(1))
     search = search.group(1)
     split = re.split(r',',search)
+    stockdatalist = []
     for line in split:
-        print(line)
+       # print(line)
+        stockdatalist.append(line)
+
+    print(stockdatalist)
