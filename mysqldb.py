@@ -394,11 +394,12 @@ class StockDatabase():
 		self.m_turnoverratio = m
 
 
+        def getstockdatafromsina(self,data)
+                print('nothing')
 
 
 
-
-
+        
 
 
 
