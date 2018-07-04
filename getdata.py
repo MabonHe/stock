@@ -15,6 +15,9 @@ import mysqldb
 url='http://hq.sinajs.cn/list=sz000651'
 
 headers = {'User-Agent':'gsi'}
+stock = mysqldb.StockDatabase()
+stock.connectdatabase()
+cursor = stock.getcursor()
 while True:
     time.sleep(2)
     request=urllib.request.Request(url, headers = headers)
