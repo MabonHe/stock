@@ -17,3 +17,4 @@ stock.connectdatabase()
 cursor = stock.getcursor()
 
 stock.createmaintable(cursor)
+stock.createupdatestatustable(cursor)

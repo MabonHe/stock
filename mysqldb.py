@@ -446,5 +446,11 @@ class StockDatabase():
 		m_high           = data[10]
 		m_low            = data[11]
 
+	def createupdatestatustable(self,cursor):
+		try:
+			cursor.execute(sql)
+		except:
+			print('create table error')
+		print(sql)
 
 

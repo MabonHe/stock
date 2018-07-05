@@ -12,7 +12,7 @@ import re
 import io
 
 
-sys.path.append('/home/hemaobin/workspace/web')
+sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 n = 0
 symbol = ''
