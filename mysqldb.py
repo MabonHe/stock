@@ -39,7 +39,7 @@ class StockDatabase():
 	m_db = ''
 	def connectdatabase(self):
 		try:
-			self.m_db = pymysql.connect('localhost','root','123','STOCKDATA')
+			self.m_db = pymysql.connect('localhost','root','12345','STOCKDATA')
 		except:
 			print('connect error!')
 	def closedb(self):
@@ -394,9 +394,7 @@ class StockDatabase():
 		self.m_turnoverratio = m
 
 
-        def getstockdatafromsina(self,data)
-                print('nothing')
-	def createmaintable(self,cursor,symbol):
+	def createmaintable(self,cursor):
 		sql = """CREATE TABLE IF NOT EXISTS maininfo
 			(
 				symbol        char(20) NOT NULL,
@@ -434,6 +432,19 @@ class StockDatabase():
 
         
 
+	def getdatafromsina(self,data):
+		m_symbol         = data[0]
+		m_code           = data[1]
+		m_name           = data[2]
+		m_trade          = data[3]
+		m_pricechange    = data[4]
+		m_changepercent  = data[5]
+		m_buy            = data[6]
+		m_sell           = data[7]
+		m_settlement     = data[8]
+		m_open           = data[9]
+		m_high           = data[10]
+		m_low            = data[11]
 
 
 
