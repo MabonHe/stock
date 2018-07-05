@@ -10,7 +10,7 @@ import time
 import random
 import re
 import io
-sys.path.append('/home/hemaobin/workspace/web')
+sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 url='http://hq.sinajs.cn/list=sz000651'
 
