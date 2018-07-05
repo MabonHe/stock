@@ -13,7 +13,10 @@ import io
 sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 url='http://hq.sinajs.cn/list=sz000651'
-
+symbollist = ['sz000651','sz000333']
+code_list = ['000651','000333']
+print(len(code_list))
+print(code_list[0])
 headers = {'User-Agent':'gsi'}
 stock = mysqldb.StockDatabase()
 stock.connectdatabase()
