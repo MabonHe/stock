@@ -396,6 +396,39 @@ class StockDatabase():
 
         def getstockdatafromsina(self,data)
                 print('nothing')
+	def createmaintable(self,cursor,symbol):
+		sql = """CREATE TABLE IF NOT EXISTS maininfo
+			(
+				symbol        char(20) NOT NULL,
+				code          char(20) NOT NULL,
+				trade         float     ,
+				pricechange   float     ,
+				changepercent float     ,
+				buy           float     ,
+				sell          float     ,
+				settlement    float     ,
+				open          float     ,
+				high          float     ,
+				low           float     ,
+				volume        float     ,
+				amount        float     ,
+				tickitime     char(50)  NOT NULL,
+				per           float     ,
+				per_d         float     ,
+				nta           float     ,
+				pb            float     ,
+				mktcap        float     ,
+				nmc           float     ,
+				turnoverratio float     ,
+				PRIMARY KEY(tickitime)
+
+			);"""
+
+		try:
+			cursor.execute(sql)
+		except:
+			print('create table error')
+		print(sql)
 
 
 
