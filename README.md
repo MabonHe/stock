@@ -1,0 +1,2 @@
+# stock
+automation stock trade
