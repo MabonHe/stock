@@ -46,6 +46,6 @@ while True:
             stockdatalist.append(line)
 
         print(stockdatalist)
-        stock.getdatafromsina(stockdatalist,code[i],symbol)
+        stock.getdatafromsina(stockdatalist,code_list[i],symbol)
         print(code_list[i])
         i = i + 1
