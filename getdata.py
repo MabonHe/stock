@@ -26,7 +26,7 @@ while True:
     for symbol in symbollist:
         url = basic_url + symbol
         print(url)
-        time.sleep(2)
+        time.sleep(1)
         request=urllib.request.Request(url, headers = headers)
         try:
             response=urllib.request.urlopen(request)
