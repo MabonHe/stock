@@ -39,3 +39,5 @@ while True:
         stockdatalist.append(line)
 
     print(stockdatalist)
+    stock.getdatafromsina(stockdatalist)
+    print(stock.m_symbol)

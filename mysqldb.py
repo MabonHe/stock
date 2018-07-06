@@ -162,6 +162,10 @@ class StockDatabase():
 			sql = """INSERT main%s(symbol,code,trade,pricechange,changepercent,buy,sell,settlement,open,high,low,volume,amount,tickitime,per,per_d,nta,pb,mktcap,nmc,turnoverratio) \
 					VALUES ('%s','%s',%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'%s',%s,%s,%s,%s,%s,%s,%s)""" % \
 					(self.m_symbol,self.m_symbol,self.m_code,self.m_trade,self.m_pricechange,self.m_changepercent,self.m_buy,self.m_sell,self.m_settlement,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_tickitime,self.m_per,self.m_per_d,self.m_nta,self.m_pb,self.m_mktcap,self.m_nmc,self.m_turnoverratio)
+		elif status == 3:
+			sql = """INSERT main%s(symbol,code,trade,open,high,low,volume,amount,tickitime) \
+					VALUES ('%s','%s',%s,%s,%s,%s,%s,%s,'%s')""" % \
+					(self.m_symbol,self.m_symbol,self.m_code,self.m_trade,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_tickitime)
 		try:
 			cursor.execute(sql)
 			self.m_db.commit()
@@ -432,20 +436,26 @@ class StockDatabase():
 
         
 
-	def getdatafromsina(self,data):
-		m_symbol         = data[0]
-		m_code           = data[1]
-		m_name           = data[2]
-		m_trade          = data[3]
-		m_pricechange    = data[4]
-		m_changepercent  = data[5]
-		m_buy            = data[6]
-		m_sell           = data[7]
-		m_settlement     = data[8]
-		m_open           = data[9]
-		m_high           = data[10]
-		m_low            = data[11]
+	def getdatafromsina(self,data,symbol,code):
 
+        m_symbol         = symbol
+		m_code           = code
+		m = data[0:1]
+		m_name           = ''.join(m)
+		m = data[3:4]
+		m_trade          = ''.join(m)	 
+	 	m = data[1:2]
+		m_open           = ''.join(m)
+		m = data[4:5] 
+		m_high           = ''.join(m)
+		m = data[5:6] 
+		m_low            = ''.join(m) 
+		m = data[8:9]
+		m_volume         = ''.join(m)
+		m = data[9:10]
+		m_amount         = ''.join(m)
+		m = data[30:32]
+		m_tickitime      = ''.join(m)
 	def createupdatestatustable(self,cursor):
 		try:
 			cursor.execute(sql)
