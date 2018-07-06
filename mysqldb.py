@@ -436,26 +436,26 @@ class StockDatabase():
 
         
 
-	def getdatafromsina(self,data,symbol,code):
+	def getdatafromsina(self,data):
 
-        m_symbol         = symbol
-		m_code           = code
-		m = data[0:1]
-		m_name           = ''.join(m)
-		m = data[3:4]
-		m_trade          = ''.join(m)	 
-	 	m = data[1:2]
-		m_open           = ''.join(m)
-		m = data[4:5] 
-		m_high           = ''.join(m)
-		m = data[5:6] 
-		m_low            = ''.join(m) 
-		m = data[8:9]
-		m_volume         = ''.join(m)
-		m = data[9:10]
-		m_amount         = ''.join(m)
-		m = data[30:32]
-		m_tickitime      = ''.join(m)
+                m_symbol         = symbol
+                m_code           = code
+                m = data[0:1]
+                m_name           = ''.join(m)
+                m = data[3:4]
+                m_trade          = ''.join(m)	 
+                m = data[1:2]
+                m_open           = ''.join(m)
+                m = data[4:5] 
+                m_high           = ''.join(m)
+                m = data[5:6] 
+                m_low            = ''.join(m) 
+                m = data[8:9]
+                m_volume         = ''.join(m)
+                m = data[9:10]
+                m_amount         = ''.join(m)
+                m = data[30:32]
+                m_tickitime      = ''.join(m)
 	def createupdatestatustable(self,cursor):
 		try:
 			cursor.execute(sql)
