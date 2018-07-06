@@ -22,6 +22,7 @@ stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
 while True:
+    i = 0
     for symbol in symbollist:
         url = basic_url + symbol
         print(url)
@@ -47,3 +48,5 @@ while True:
         print(stockdatalist)
         stock.getdatafromsina(stockdatalist,"000651","sz000651")
         print(stock.m_tickitime)
+        print(code_list[i])
+        i = i + 1
