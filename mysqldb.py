@@ -466,3 +466,18 @@ class StockDatabase():
 		print(sql)
 
 
+	def createtradestable(self,cursor):
+		sql = """CREATE TABLE IF NOT EXISTS maintrade
+			(
+				symbol        char(30),
+				code          char(20),
+                                sellprice     float,
+                                buyprice      float,
+                                volume        int,
+                                amount        float,
+			);"""
+		try:
+			cursor.execute(sql)
+		except:
+			print('create table error')
+		print(sql)
