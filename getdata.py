@@ -47,5 +47,6 @@ while True:
 
         print(stockdatalist)
         stock.getdatafromsina(stockdatalist,code_list[i],symbol)
+        stock.insertdata(cursor,3)
         print(code_list[i])
         i = i + 1
