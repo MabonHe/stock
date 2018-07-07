@@ -22,25 +22,26 @@ stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
 while True:
-    time.sleep(2)
-    request=urllib.request.Request(url, headers = headers)
-    try:
-        response=urllib.request.urlopen(request)
-        html = response.read()
-    except urllib.error.URLError as e:
-        print('urlerror!!')
-        time.sleep(12)
-    #print(html)
-    htmlstr = html.decode('GBK')
-    search=re.search(r'=(.*)',htmlstr)
-    #print(search.group(1))
-    search = search.group(1)
-    split = re.split(r',',search)
-    stockdatalist = []
-    for line in split:
-       # print(line)
-        stockdatalist.append(line)
+    for symbol in symbollist:
+        time.sleep(2)
+        request=urllib.request.Request(url, headers = headers)
+        try:
+            response=urllib.request.urlopen(request)
+            html = response.read()
+        except urllib.error.URLError as e:
+            print('urlerror!!')
+            time.sleep(12)
+        #print(html)
+        htmlstr = html.decode('GBK')
+        search=re.search(r'=(.*)',htmlstr)
+        #print(search.group(1))
+        search = search.group(1)
+        split = re.split(r',',search)
+        stockdatalist = []
+        for line in split:
+            # print(line)
+            stockdatalist.append(line)
 
-    print(stockdatalist)
-    stock.getdatafromsina(stockdatalist,"000651","sz000651")
-    print(stock.m_name)
+        print(stockdatalist)
+        stock.getdatafromsina(stockdatalist,"000651","sz000651")
+        print(stock.m_name)
