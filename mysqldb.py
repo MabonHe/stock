@@ -90,6 +90,7 @@ class StockDatabase():
 				trade         float     ,
 				pricechange   float     ,
 				changepercent float     ,
+                                yestoday_close float,
 				buy           float     ,
 				sell          float     ,
 				settlement    float     ,
@@ -469,12 +470,13 @@ class StockDatabase():
 	def createtradestable(self,cursor):
 		sql = """CREATE TABLE IF NOT EXISTS maintrade
 			(
-				symbol        char(30),
-				code          char(20),
-                                sellprice     float,
-                                buyprice      float,
-                                volume        int,
-                                amount        float,
+				symbol         char(30),
+				code           char(20),
+                                sellprice      float,
+                                buyprice       float,
+                                volume         int,
+                                amount         float,
+                                yestoday_close float,
 			);"""
 		try:
 			cursor.execute(sql)
