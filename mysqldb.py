@@ -454,8 +454,10 @@ class StockDatabase():
                 self.m_volume         = ''.join(m)
                 m = data[9:10]
                 self.m_amount         = ''.join(m)
-                m = data[30:32]
-                self.m_tickitime      = ''.join(m)
+                m1 = data[30:31]
+                m2 = data[31:32]
+                m = ''.join(m1) + ' ' + ''.join(m2)
+                self.m_tickitime      = m
 	def createupdatestatustable(self,cursor):
 		try:
 			cursor.execute(sql)

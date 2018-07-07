@@ -12,7 +12,7 @@ import re
 import io
 sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
-url='http://hq.sinajs.cn/list=sz000651'
+basic_url='http://hq.sinajs.cn/list='
 symbollist = ['sz000651','sz000333']
 code_list = ['000651','000333']
 print(len(code_list))
@@ -23,6 +23,8 @@ stock.connectdatabase()
 cursor = stock.getcursor()
 while True:
     for symbol in symbollist:
+        url = basic_url + symbol
+        print(url)
         time.sleep(2)
         request=urllib.request.Request(url, headers = headers)
         try:
@@ -44,4 +46,4 @@ while True:
 
         print(stockdatalist)
         stock.getdatafromsina(stockdatalist,"000651","sz000651")
-        print(stock.m_name)
+        print(stock.m_tickitime)
