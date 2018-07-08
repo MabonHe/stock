@@ -484,16 +484,16 @@ class StockDatabase():
 		except:
 			print('create table error')
 		print(sql)
-	def createtradeRecordtable(self,cursor,symbol):
+	def createtradeRecordtable(self,cursor,symbol,code):
 		sql = """CREATE TABLE IF NOT EXISTS trade%s
 			(
-				code           char(20),
+				code           char(20) DEFAULT %s,
                                 volume         int,
                                 cost_amount         float,
                                 costprice      float,
                                 costtime    char(50),
 				PRIMARY KEY(costtime)
-			);""" % symbol
+			);""" % (symbol,code)
 		try:
 			cursor.execute(sql)
 		except:
