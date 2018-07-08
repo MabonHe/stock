@@ -467,7 +467,7 @@ class StockDatabase():
 		print(sql)
 
 #cost = cost price 
-	def createtradestable(self,cursor):
+	def createtradetable(self,cursor):
 		sql = """CREATE TABLE IF NOT EXISTS maintrade
 			(
 				symbol         char(30),
@@ -490,9 +490,10 @@ class StockDatabase():
 				code           char(20),
                                 volume         int,
                                 cost_amount         float,
-                                market_value   float,
-                                costtime    char(50)
-			);"""symbol
+                                costprice      float,
+                                costtime    char(50),
+				PRIMARY KEY(costtime)
+			);""" % symbol
 		try:
 			cursor.execute(sql)
 		except:
