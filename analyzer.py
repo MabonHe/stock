@@ -20,5 +20,6 @@ class Analyzer():
     def compare_price(self,symbol,price):
         sql='select * from trade%s where volume > 1'%symbol
         data = stock.select(cursor,sql)
-        if data == Null
+        if data != None:
+            print('write data to file')
 
