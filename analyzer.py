@@ -18,8 +18,14 @@ cursor = stock.getcursor()
 
 class Analyzer():
     def compare_price(self,symbol,price):
-        sql='select * from trade%s where volume > 1'%symbol
+        sql = 'SELECT SUM(volume) AS volume FROM trade%s WHERE volume < 1' % symbol
+        sell_volume = stock.select(cursor,sql)
+        if sell_volume != None:
+            print(sell_volume)
+
+        sql = 'SELECT @r:=@r+1 as rownum,a.* FROM trade%s a,(select @r:=0) b WHERE volume > 1 limit 10' % symbol
         data = stock.select(cursor,sql)
         if data != None:
-            print('write data to file')
-
+            data_dic = {}
+            for item in data:
+                print(item)

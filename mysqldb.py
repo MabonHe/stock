@@ -503,7 +503,7 @@ class StockDatabase():
                 data = None
                 try:
                     cursor.execute(sql)
-                    data = cursor.fetchone()
+                    data = cursor.fetchall()
                 except:
                     print('select error')
                 return data
