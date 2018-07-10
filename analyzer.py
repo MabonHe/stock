@@ -26,6 +26,6 @@ class Analyzer():
         sql = 'SELECT @r:=@r+1 as rownum,a.* FROM trade%s a,(select @r:=0) b WHERE volume > 1 limit 10' % symbol
         data = stock.select(cursor,sql)
         if data != None:
-            data_dic = {}
+            volume_list = []
             for item in data:
-                print(item)
+                print(item[2])
