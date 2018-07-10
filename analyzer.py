@@ -27,5 +27,10 @@ class Analyzer():
         data = stock.select(cursor,sql)
         if data != None:
             volume_list = []
+            i=0
+            buy_volume=0
             for item in data:
-                print(item[2])
+                buy_volume = buy_volume + item[2]
+                i = i+1
+                if buy_volume >= abs(sell_volume):
+                    print(buy_volume)
