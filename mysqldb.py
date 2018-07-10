@@ -500,12 +500,13 @@ class StockDatabase():
 			print('create table error')
 		print(sql)
 	def select(self,cursor,sql):
-		try:
-			cursor.execute(sql)
-			data = cursor.fetchone()
-		except:
-			print('select error')
-		return data
+                data = None
+                try:
+                    cursor.execute(sql)
+                    data = cursor.fetchone()
+                except:
+                    print('select error')
+                return data
 	def update_insert(self,cursor,sql):
 		try:
 			cursor.execute(sql)
