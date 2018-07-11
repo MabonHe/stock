@@ -57,5 +57,6 @@ class Analyzer():
             f.write(str(item))
             f.write('\n')
 
+        os.system('./sendmail.sh')
         f.close()
         stock.closedb()

@@ -47,7 +47,6 @@ while True:
             stockdatalist.append(line)
 
         analyzer.compare_price(symbol,stockdatalist[3])
-        os.system('./sendmail.sh')
         print(stockdatalist)
         stock.getdatafromsina(stockdatalist,code_list[i],symbol)
         stock.insertdata(cursor,3)
