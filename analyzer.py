@@ -30,9 +30,10 @@ class Analyzer():
         f = open('mail.txt','w')
         sql = 'SELECT SUM(volume) AS volume FROM trade%s WHERE volume < 1' % symbol
         volume = stock.select(cursor,sql)
-        if volume[0][0] != None:
+        print('volume:',volume)
+        if volume != None:
             sell_volume = volume[0][0]
-            print(sell_volume)
+            print("sell:",sell_volume)
         else:
             sell_volume = 0
         sql = 'SELECT @r:=@r+1 as rownum,a.* FROM trade%s a,(select @r:=0) b WHERE volume > 1 limit 100' % symbol
