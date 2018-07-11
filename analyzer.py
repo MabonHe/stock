@@ -62,7 +62,9 @@ class Analyzer():
             print(item)
             f.write(str(item))
             f.write('\n')
-
-        os.system('./sendmail.sh')
         f.close()
+        size=os.path.getsize('mail.txt')
+        print(size)
+        if size >= 30:
+            os.system('./sendmail.sh')
         stock.closedb()
