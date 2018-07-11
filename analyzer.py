@@ -23,6 +23,8 @@ class Analyzer():
         buy_volume=0
         diff_valume=0
         i=0
+        sell_price = float(price) - float(price)*0.11
+        print(sell_price)
         try:
             os.remove('mail.txt')
         except:
@@ -48,12 +50,15 @@ class Analyzer():
         else:
             return 0
         diff_valume = buy_volume - abs(sell_volume)
-        sql = 'SELECT * FROM trade%s WHERE volume > 1  limit %i,100' % (symbol,i-1)
+        sql = 'SELECT * FROM trade%s WHERE volume > 1 and costprice < %s limit %s,100' % (symbol,sell_price,i-1)
+        print(sql)
         data = stock.select(cursor,sql)
+        print('data:',data)
         if data == None:
             print('none')
             return 0
         for item in data:
+            print(item)
             f.write(str(item))
             f.write('\n')
 
