@@ -22,7 +22,6 @@ headers = {'User-Agent':'gsi'}
 stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
-analyzer.compare_price('000651',45)
 while True:
     i = 0
     for symbol in symbollist:
