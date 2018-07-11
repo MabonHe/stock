@@ -46,7 +46,7 @@ class Analyzer():
         else:
             return 0
         diff_valume = buy_volume - abs(sell_volume)
-        sql = 'SELECT * FROM trade%s WHERE volume > 1 limit %i,100' % (symbol,i-1)
+        sql = 'SELECT * FROM trade%s WHERE volume > 1  limit %i,100' % (symbol,i-1)
         data = stock.select(cursor,sql)
         if data == None:
             print('none')
