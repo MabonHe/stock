@@ -46,6 +46,7 @@ while True:
             # print(line)
             stockdatalist.append(line)
 
+        analyzer.compare_price(symbol,stockdatalist[3])
         print(stockdatalist)
         stock.getdatafromsina(stockdatalist,code_list[i],symbol)
         stock.insertdata(cursor,3)

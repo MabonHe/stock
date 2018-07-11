@@ -10,6 +10,7 @@ import time
 import random
 import re
 import io
+import os
 sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 
@@ -22,6 +23,10 @@ class Analyzer():
         buy_volume=0
         diff_valume=0
         i=0
+        try:
+            os.remove('mail.txt')
+        except:
+            print('no file')
         f = open('mail.txt','w')
         sql = 'SELECT SUM(volume) AS volume FROM trade%s WHERE volume < 1' % symbol
         volume = stock.select(cursor,sql)
@@ -29,8 +34,7 @@ class Analyzer():
             print(volume[0][0])
             sell_volume = volume[0][0]
             print(sell_volume)
-
-        sql = 'SELECT @r:=@r+1 as rownum,a.* FROM trade%s a,(select @r:=0) b WHERE volume > 1 limit 10' % symbol
+        sql = 'SELECT @r:=@r+1 as rownum,a.* FROM trade%s a,(select @r:=0) b WHERE volume > 1 limit 100' % symbol
         data = stock.select(cursor,sql)
         if data != None:
             for item in data:
@@ -39,6 +43,8 @@ class Analyzer():
                 if buy_volume >= abs(sell_volume):
                     print('buyvolume:',buy_volume,'num:',i)
                     break
+        else:
+            return 0
         diff_valume = buy_volume - abs(sell_volume)
         sql = 'SELECT * FROM trade%s WHERE volume > 1 limit %i,100' % (symbol,i-1)
         data = stock.select(cursor,sql)
