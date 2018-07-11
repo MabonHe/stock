@@ -10,6 +10,7 @@ import time
 import random
 import re
 import io
+import os
 sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 import analyzer
@@ -47,6 +48,7 @@ while True:
             stockdatalist.append(line)
 
         analyzer.compare_price(symbol,stockdatalist[3])
+        os.system('./sendmail.sh')
         print(stockdatalist)
         stock.getdatafromsina(stockdatalist,code_list[i],symbol)
         stock.insertdata(cursor,3)

@@ -10,6 +10,7 @@ import time
 import random
 import re
 import io
+import os
 sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 import analyzer
@@ -21,4 +22,4 @@ headers = {'User-Agent':'gsi'}
 stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
-analyzer.compare_price('sz000651',45)
+analyzer.compare_price('sz000333',45)
