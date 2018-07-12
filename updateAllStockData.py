@@ -73,6 +73,7 @@ while n < 87:
             stock.getdata(stocklist)
             #stock.printall()
             stock.updatestockdata(cursor)
+            stock.insertdata(cursor,0)
             stock.updatestatus(cursor,stock.m_code,1)
             stock.updatestatus(cursor,stock.m_code,3)
         rdom = random.randint(30,60)

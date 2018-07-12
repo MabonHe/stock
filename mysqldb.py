@@ -153,8 +153,8 @@ class StockDatabase():
 	def insertdata(self,cursor, status = 0):
 		if status == 0:
 			sql = """INSERT main%s(symbol,code,trade,pricechange,changepercent,open,high,low,volume,amount,tickitime,turnoverratio) \
-					VALUES ('%s','%s',%s,%s,%s,%s,%s,%s,%s,%s,'%s',%s)""" % \
-					(self.m_symbol,self.m_symbol,self.m_code,self.m_trade,self.m_pricechange,self.m_changepercent,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_tickitime,self.m_turnoverratio)
+					VALUES ('%s','%s',%s,%s,%s,%s,%s,%s,%s,%s,NOW(),%s)""" % \
+					(self.m_symbol,self.m_symbol,self.m_code,self.m_trade,self.m_pricechange,self.m_changepercent,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_turnoverratio)
 		elif status == 1:
 			sql = """INSERT maininfo(symbol,code,name,trade,pricechange,changepercent,buy,sell,settlement,open,high,low,volume,amount,tickitime,per,per_d,nta,pb,mktcap,nmc,turnoverratio) \
 					VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""" % \
