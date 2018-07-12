@@ -22,4 +22,4 @@ headers = {'User-Agent':'gsi'}
 stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
-analyzer.compare_price('sz000651','46')
+analyzer.compare_price('sz000333','46')

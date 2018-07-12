@@ -58,13 +58,24 @@ class Analyzer():
         if data == None:
             print('none')
             return 0
+        k = 0
         for item in data:
             print(item)
+            if k == 0:
+                lst = list(item)
+                print('lst1:',lst[1])
+                lst[1] =diff_valume
+                print('lst1:',lst[1])
+                item = tuple(lst)
+                print('diff:',diff_valume)
+                print('1:',lst[1])
+                print('2:',item[1])
             f.write(str(item))
             f.write('\n')
+            k = k+1
         f.close()
         size=os.path.getsize('mail.txt')
-        print(size)
+        print('filesize:',size)
         if size >= 30:
             os.system('./sendmail.sh')
         stock.closedb()
