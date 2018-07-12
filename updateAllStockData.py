@@ -21,6 +21,11 @@ stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
 stocklist = []
+f = open('temp.txt','r')
+n = f.read()
+n = int(n)
+print(n)
+f.close()
 while n < 87:
         if n % 2 != 0:
             headers = {'User-Agent':'what_the_fuck'}
@@ -29,6 +34,9 @@ while n < 87:
         print(headers)
         url = headUrl + "%d" % n + endUrl
         print(url)
+        f = open('temp.txt','w')
+        f.write(str(n))
+        f.close()
         request=urllib.request.Request(url, headers = headers)
         try:
             response=urllib.request.urlopen(request)
@@ -51,7 +59,7 @@ while n < 87:
         split = re.split(r'\[',search)
         print(split)
         for line in split:
-            print(line)
+           # print(line)
             split_m = re.split(r'\,',line)
             stocklist = []
             for dataline in split_m:
@@ -60,17 +68,20 @@ while n < 87:
                     what=dataline
                 else:
                     what = match.group(1)
-                print(what)
+               # print(what)
                 stocklist.append(what)
             stock.getdata(stocklist)
             #stock.printall()
             stock.updatestockdata(cursor)
             stock.updatestatus(cursor,stock.m_code,1)
             stock.updatestatus(cursor,stock.m_code,3)
-        rdom = random.randint(30,200)
+        rdom = random.randint(30,60)
         print(rdom)
 
         time.sleep(rdom)
         n += 1
 stock.closedb()
+f = open('temp.txt','w')
+f.write('1')
+f.close()
 
