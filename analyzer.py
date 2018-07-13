@@ -30,7 +30,7 @@ class Analyzer():
             os.remove('mail.txt')
         except:
             print('no file')
-        f = open('mail.txt','w')
+        f = open('/home/hemaobin/workspace/stock/mail.txt','w')
         sql = 'SELECT SUM(volume) AS volume FROM trade%s WHERE volume < 1' % symbol
         volume = stock.select(cursor,sql)
         print('volume:',volume)
@@ -74,7 +74,7 @@ class Analyzer():
             f.write('\n')
             k = k+1
         f.close()
-        size=os.path.getsize('mail.txt')
+        size=os.path.getsize('/home/hemaobin/workspace/stock/mail.txt')
         print('filesize:',size)
         if size >= 30:
             os.system('/home/hemaobin/workspace/stock/sendmail.sh')

@@ -1,3 +1,4 @@
 #!/bin/bash
 echo 'hello world'
-cat mail.txt | sendmail maobinx.he@intel.com
+echo 'hello world'>>test.txt
+cat /home/hemaobin/workspace/stock/mail.txt | mail -s 'stock' maobinx.he@intel.com

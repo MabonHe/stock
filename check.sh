@@ -5,5 +5,5 @@
         echo "what the fuck" > /home/hemaobin/what_fuck.txt
     else
         date >> /home/hemaobin/check.txt
-        /home/hemaobin/workspace/stock/getdata.py &
+        pushd /home/hemaobin/workspace/stock/; ./getdata.py &
     fi
