@@ -77,5 +77,5 @@ class Analyzer():
         size=os.path.getsize('mail.txt')
         print('filesize:',size)
         if size >= 30:
-            os.system('./sendmail.sh')
+            os.system('/home/hemaobin/workspace/stock/sendmail.sh')
         stock.closedb()
