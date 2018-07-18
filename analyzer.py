@@ -23,7 +23,7 @@ class Analyzer():
         buy_volume=0
         diff_valume=0
         i=0
-        sell_price = float(price) - float(price)*0.11
+        sell_price = float(price) - float(price)*0.02
         print(sell_price)
         print(price)
         try:
@@ -71,6 +71,7 @@ class Analyzer():
                 print('1:',lst[1])
                 print('2:',item[1])
             f.write(str(item))
+            f.write(str(sell_price))
             f.write('\n')
             k = k+1
         f.close()

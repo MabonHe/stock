@@ -34,6 +34,7 @@ while True:
             html = response.read()
         except urllib.error.URLError as e:
             print('urlerror!!')
+            html = ""
             time.sleep(12)
         #print(html)
         htmlstr = html.decode('GBK')
