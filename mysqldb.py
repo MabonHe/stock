@@ -404,6 +404,7 @@ class StockDatabase():
 			(
 				symbol        char(20) NOT NULL,
 				code          char(20) NOT NULL,
+				name          char(50)  ,
 				trade         float     ,
 				pricechange   float     ,
 				changepercent float     ,

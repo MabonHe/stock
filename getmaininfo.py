@@ -20,6 +20,7 @@ headers = {'User-Agent':'gsi'}
 stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
+stock.createmaintable(cursor)
 stocklist = []
 f = open('temp.txt','r')
 n = f.read()
@@ -44,13 +45,6 @@ while n < 87:
         except urllib.error.URLError as e:
             print('urlerror!!')
 
-        #print(html)
-        #html_page=lxml.html.fromstring(html)
-        #html_str = lxml.html.tostring(html_page)
-        #print(html_str)
-        #file = open('data.txt','w').write(html_str)
-        #file.close()
-        #file = open('data.txt','r').read()
         htmlstr = html.decode('GBK')
        # print(htmlstr)
         search=re.search(r'\[\[(.*)',htmlstr)
@@ -71,11 +65,7 @@ while n < 87:
                 print(what)
                 stocklist.append(what)
             stock.getdata(stocklist)
-            #stock.printall()
-            stock.updatestockdata(cursor)
-            stock.insertdata(cursor,0)
-            stock.updatestatus(cursor,stock.m_code,1)
-            stock.updatestatus(cursor,stock.m_code,3)
+            stock.insertdata(cursor,1)
         rdom = random.randint(30,60)
         print(rdom)
 
