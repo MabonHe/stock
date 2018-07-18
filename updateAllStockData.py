@@ -51,8 +51,8 @@ while n < 87:
         #file = open('data.txt','w').write(html_str)
         #file.close()
         #file = open('data.txt','r').read()
-        htmlstr = html.decode()
-        print(htmlstr)
+        htmlstr = html.decode('GBK')
+       # print(htmlstr)
         search=re.search(r'\[\[(.*)',htmlstr)
         search = search.group()
         #print(search)
@@ -68,7 +68,7 @@ while n < 87:
                     what=dataline
                 else:
                     what = match.group(1)
-               # print(what)
+                print(what)
                 stocklist.append(what)
             stock.getdata(stocklist)
             #stock.printall()
