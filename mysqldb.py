@@ -423,7 +423,7 @@ class StockDatabase():
 				mktcap        float     ,
 				nmc           float     ,
 				turnoverratio float     ,
-				PRIMARY KEY(tickitime)
+				PRIMARY KEY(code)
 
 			);"""
 

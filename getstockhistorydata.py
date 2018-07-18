@@ -18,7 +18,7 @@ n = 0
 symbol = ''
 code = ''
 url = 'http://q.stock.sohu.com/hisHq?code=cn_600004&start=20180318&end=20180319'
-year = 1996
+year = 2006
 mon = '01'
 startday = '02'
 endday = '01'
