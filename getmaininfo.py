@@ -51,7 +51,7 @@ while n < 87:
         search = search.group()
         #print(search)
         split = re.split(r'\[',search)
-        print(split)
+        #print(split)
         for line in split:
            # print(line)
             split_m = re.split(r'\,',line)
@@ -62,7 +62,7 @@ while n < 87:
                     what=dataline
                 else:
                     what = match.group(1)
-                print(what)
+                #print(what)
                 stocklist.append(what)
             stock.getdata(stocklist)
             stock.insertdata(cursor,1)

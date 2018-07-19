@@ -127,6 +127,7 @@ class StockDatabase():
 	def selectdata(self,cursor,status = 1):
 		#if status == 0 return code
 		#if status == 1 return all
+		data = ""
 		if status == 0:
 			sql = "SELECT code from maininfo WHERE update_status != 1 LIMIT 1"
 		elif status == 1:
@@ -156,8 +157,8 @@ class StockDatabase():
 					VALUES ('%s','%s',%s,%s,%s,%s,%s,%s,%s,%s,NOW(),%s)""" % \
 					(self.m_symbol,self.m_symbol,self.m_code,self.m_trade,self.m_pricechange,self.m_changepercent,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_turnoverratio)
 		elif status == 1:
-			sql = """INSERT maininfo(symbol,code,name,trade,pricechange,changepercent,buy,sell,settlement,open,high,low,volume,amount,tickitime,per,per_d,nta,pb,mktcap,nmc,turnoverratio) \
-					VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""" % \
+			sql = """INSERT INTO maininfo(symbol,code,name,trade,pricechange,changepercent,buy,sell,settlement,open,high,low,volume,amount,tickitime,per,per_d,nta,pb,mktcap,nmc,turnoverratio) \
+					VALUES ('%s','%s','%s',%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,'%s',%s,%s,%s,%s,%s,%s,%s)""" % \
 					(self.m_symbol,self.m_code,self.m_name,self.m_trade,self.m_pricechange,self.m_changepercent,self.m_buy,self.m_sell,self.m_settlement,self.m_open,self.m_high,self.m_low,self.m_volume,self.m_amount,self.m_tickitime,self.m_per,self.m_per_d,self.m_nta,self.m_pb,self.m_mktcap,self.m_nmc,self.m_turnoverratio)
 		elif status == 2:
 			sql = """INSERT main%s(symbol,code,trade,pricechange,changepercent,buy,sell,settlement,open,high,low,volume,amount,tickitime,per,per_d,nta,pb,mktcap,nmc,turnoverratio) \
@@ -172,6 +173,8 @@ class StockDatabase():
 			self.m_db.commit()
 		except:
 			self.m_db.rollback()
+			print('insert error')
+			print(sql)
 		#print(sql)
 	def updatestatus(self,cursor,code,status = 0):
 		if status == 0:

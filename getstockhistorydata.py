@@ -38,6 +38,7 @@ while n < 1:
 	rets = status[3]
 	if rets == 1:
 		data = stock.selectdata(cursor)
+		print(data)
 		if data == None:
 			break;
 		code = data[1]

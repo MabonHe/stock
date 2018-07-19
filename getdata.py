@@ -50,6 +50,6 @@ while True:
         stock.getdatafromsina(stockdatalist,code_list[i],symbol)
         print("stockdata:",stockdatalist[3])
         analyzer.compare_price(symbol,stockdatalist[3])
-        stock.insertdata(cursor,3)
+       # stock.insertdata(cursor,3)
         print(code_list[i])
         i = i + 1
