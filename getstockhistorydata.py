@@ -93,7 +93,7 @@ while n < 1:
 		time.sleep(rdom)
 	stock.updatestatus(cursor,code)
 	stock.update_status_status(cursor,1,1)
-	year = 1995
+	year = 2006
 
 
 stock.closedb()
