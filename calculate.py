@@ -11,6 +11,7 @@ import time
 import random
 import re
 import io
+import os
 sys.path.append('/home/hemaobin/workspace/stock')
 import mysqldb
 symbollist = ['sz000651','sz000333','sz300104','sz300415','sh601777','sz300051']
@@ -20,9 +21,20 @@ stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
 
+f = open('benefit.txt','w')
+benefit = 0
 for code in code_list:
     sql = "SELECT code,volume,(market_value - yestoday_close) * volume AS benefit from maintrade where code='%s'" %code
-    print(sql) 
+    data = stock.select(cursor,sql)
+    benefit = benefit + data[0][2]
+    f.write(str(data))
+    f.write('\n')
 
+f.write("totle:   ")
+f.write(str(benefit))
+f.close()
+print(benefit)
+
+os.system('/home/hemaobin/workspace/stock/sendmail_.sh')
  
   
