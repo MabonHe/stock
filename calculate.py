@@ -21,7 +21,7 @@ stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
 
-f = open('benefit.txt','w')
+f = open('/home/hemaobin/workspace/stock/benefit.txt','w')
 benefit = 0
 for code in code_list:
     sql = "SELECT code,volume,(market_value - yestoday_close) * volume AS benefit from maintrade where code='%s'" %code
