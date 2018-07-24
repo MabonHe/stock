@@ -19,34 +19,10 @@ basic_url='http://hq.sinajs.cn/list='
 stock = mysqldb.StockDatabase()
 stock.connectdatabase()
 cursor = stock.getcursor()
-while True:
-    i = 0
-    for symbol in symbollist:
-        url = basic_url + symbol
-        print(url)
-        time.sleep(1)
-        request=urllib.request.Request(url, headers = headers)
-        try:
-            response=urllib.request.urlopen(request)
-            html = response.read()
-        except urllib.error.URLError as e:
-            print('urlerror!!')
-            html = ""
-            time.sleep(12)
-        #print(html)
-        htmlstr = html.decode('GBK')
-        search=re.search(r'=(.*)',htmlstr)
-        #print(search.group(1))
-        search = search.group(1)
-        split = re.split(r',',search)
-        stockdatalist = []
-        for line in split:
-            # print(line)
-            stockdatalist.append(line)
-        print(stockdatalist)
-        stock.getdatafromsina(stockdatalist,code_list[i],symbol)
-        print("stockdata:",stockdatalist[3])
-        analyzer.compare_price(symbol,stockdatalist[3])
-       # stock.insertdata(cursor,3)
-        print(code_list[i])
-        i = i + 1
+
+for code in code_list:
+    sql = "SELECT code,volume,(market_value - yestoday_close) * volume AS benefit from maintrade where code='%s'" %code
+    print(sql) 
+
+ 
+  
