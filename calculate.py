@@ -33,6 +33,7 @@ for code in code_list:
 f.write("totle:   ")
 f.write(str(benefit))
 f.close()
+stock.closedb()
 print(benefit)
 
 os.system('/home/hemaobin/workspace/stock/sendmail_.sh')
