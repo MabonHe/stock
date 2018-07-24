@@ -34,6 +34,7 @@ class StockDatabase():
 	m_mktcap        =''
 	m_nmc           =''
 	m_turnoverratio =''
+	m_yestoday_close = ''
 	m_update_status =''
 
 	m_db = ''
@@ -90,7 +91,7 @@ class StockDatabase():
 				trade         float     ,
 				pricechange   float     ,
 				changepercent float     ,
-                                yestoday_close float,
+				yestoday_close float,
 				buy           float     ,
 				sell          float     ,
 				settlement    float     ,
@@ -447,6 +448,8 @@ class StockDatabase():
                 self.m_code           = code
                 m = data[0:1]
                 self.m_name           = ''.join(m)
+                m = data[2:3]
+                self.m_yestoday_close = ''.join(m)
                 m = data[3:4]
                 self.m_trade          = ''.join(m)	 
                 m = data[1:2]
