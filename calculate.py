@@ -24,7 +24,7 @@ cursor = stock.getcursor()
 f = open('/home/hemaobin/workspace/stock/benefit.txt','w')
 benefit = 0
 for code in code_list:
-    sql = "SELECT code,volume,(market_value - yestoday_close) * volume AS benefit from maintrade where code='%s'" %code
+    sql = "SELECT code,volume,market_value,(market_value - yestoday_close) * volume AS benefit from maintrade where code='%s'" %code
     data = stock.select(cursor,sql)
     benefit = benefit + data[0][2]
     f.write(str(data))
