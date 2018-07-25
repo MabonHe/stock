@@ -26,12 +26,15 @@ benefit = 0
 for code in code_list:
     sql = "SELECT code,volume,market_value,(market_value - yestoday_close) * volume AS benefit from maintrade where code='%s'" %code
     data = stock.select(cursor,sql)
-    benefit = benefit + data[0][2]
+    benefit = benefit + data[0][3]
+    print(benefit)
+    f.write('\n')
     f.write(str(data))
     f.write('\n')
 
 f.write("totle:   ")
 f.write(str(benefit))
+f.write('\n')
 f.close()
 stock.closedb()
 print(benefit)
